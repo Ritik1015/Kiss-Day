@@ -1,178 +1,131 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bhavya 💖 Kiss Day</title>
+<title>Kiss Day For Bhavya ❤️</title>
 
 <style>
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Segoe UI',sans-serif;
-}
-
 body{
-height:100vh;
-display:flex;
-justify-content:center;
-align-items:center;
-background:radial-gradient(circle at top,#ff4e8a,#ff1f5a);
-overflow:hidden;
-color:white;
-text-align:center;
+  margin:0;
+  padding:0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg,#ff758c,#ff7eb3);
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  overflow:hidden;
 }
 
-/* Floating Background Hearts */
-.bg-heart{
-position:absolute;
-font-size:20px;
-opacity:0.5;
-animation: floatUp linear infinite;
+.container{
+  background:white;
+  padding:25px;
+  border-radius:20px;
+  box-shadow:0 10px 25px rgba(0,0,0,0.2);
+  max-width:350px;
+  position:relative;
+  z-index:2;
 }
 
-@keyframes floatUp{
-0%{transform:translateY(100vh) scale(0.5);}
-100%{transform:translateY(-10vh) scale(1.2);}
+h1{
+  color:#ff4d6d;
 }
 
-/* Main Box */
-.box{
-background:rgba(255,255,255,0.12);
-backdrop-filter:blur(20px);
-padding:50px 30px;
-border-radius:30px;
-width:90%;
-max-width:420px;
-box-shadow:0 20px 50px rgba(0,0,0,0.3);
-animation: fadeIn 1.2s ease;
-}
-
-@keyframes fadeIn{
-from{opacity:0; transform:scale(0.8);}
-to{opacity:1; transform:scale(1);}
-}
-
-/* Neon Name */
-.name{
-font-size:32px;
-font-weight:bold;
-margin-bottom:10px;
-text-shadow:
-0 0 5px #fff,
-0 0 15px #ff9bd4,
-0 0 30px #ff2e63;
-}
-
-/* Button */
 button{
-margin-top:25px;
-padding:14px 28px;
-border:none;
-border-radius:30px;
-background:white;
-color:#ff1f5a;
-font-weight:bold;
-font-size:16px;
-cursor:pointer;
-transition:0.3s;
+  background:#ff4d6d;
+  border:none;
+  color:white;
+  padding:12px 25px;
+  border-radius:25px;
+  font-size:16px;
+  cursor:pointer;
+  margin-top:15px;
+  transition:0.3s;
 }
 
 button:hover{
-transform:scale(1.1);
-background:#ffe6ec;
+  background:#ff1e56;
 }
 
-/* Hidden Love Screen */
-.love-screen{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:linear-gradient(135deg,#ff2e63,#ff6f91);
-display:flex;
-justify-content:center;
-align-items:center;
-flex-direction:column;
-opacity:0;
-visibility:hidden;
-transition:0.6s;
+#surprise{
+  display:none;
+  margin-top:15px;
 }
 
-.love-screen.show{
-opacity:1;
-visibility:visible;
+img{
+  width:200px;
+  margin-top:10px;
 }
 
-.kiss{
-font-size:50px;
-animation: kissMove 0.6s infinite alternate;
+p{
+  font-size:15px;
+  color:#444;
 }
 
-@keyframes kissMove{
-from{transform:translateX(-8px);}
-to{transform:translateX(8px);}
+.love{
+  position:absolute;
+  color:white;
+  font-size:20px;
+  animation: float 6s linear infinite;
 }
 
-.love-text{
-margin-top:20px;
-font-size:22px;
-padding:0 20px;
-}
-
-.footer{
-position:absolute;
-bottom:20px;
-font-size:16px;
-opacity:0.8;
+@keyframes float{
+  0%{transform:translateY(100vh);opacity:1;}
+  100%{transform:translateY(-10vh);opacity:0;}
 }
 </style>
 </head>
 
 <body>
 
-<audio id="music" src="song.mp3"></audio>
+<div class="container">
+  <h1>Happy Kiss Day Bhavya 💋</h1>
+  <p>From Dudu ❤️</p>
+
+  <button onclick="startLove()">Click For Surprise 💖</button>
+
+  <div id="surprise">
+    <img src="kiss.gif" alt="Kiss GIF">
+
+    <p>💋 Tumhare maathe par ek pyaara sa kiss…  
+    jo tumhe hamesha safe feel karaye.</p>
+
+    <p>💋 Tumhari gaalon par ek soft sa kiss…  
+    jo tumhari muskaan aur khoobsurat bana de.</p>
+
+    <p>💋 Tumhare haathon par ek gentle sa kiss…  
+    kyunki ye haath hamesha mere saath rahenge.</p>
+
+    <p style="color:#ff4d6d;font-weight:bold;">
+      Tum meri ho… aur hamesha rahogi ❤️
+    </p>
+  </div>
+</div>
+
+<audio id="bgmusic" src="song.mp3"></audio>
 
 <script>
-for(let i=0;i<30;i++){
-let heart=document.createElement("div");
-heart.className="bg-heart";
-heart.innerHTML="💖";
-heart.style.left=Math.random()*100+"vw";
-heart.style.fontSize=(15+Math.random()*25)+"px";
-heart.style.animationDuration=(5+Math.random()*5)+"s";
-document.body.appendChild(heart);
+function startLove(){
+  document.getElementById("surprise").style.display="block";
+  document.getElementById("bgmusic").play();
+  createHearts();
 }
-</script>
 
-<div class="box">
-<div class="name">Bhavya 💖</div>
-<h2>Happy Kiss Day 💋</h2>
+function createHearts(){
+  setInterval(function(){
+    var heart=document.createElement("div");
+    heart.className="love";
+    heart.innerHTML="❤️";
+    heart.style.left=Math.random()*100+"vw";
+    heart.style.fontSize=(Math.random()*20+15)+"px";
+    document.body.appendChild(heart);
 
-<button onclick="openLove()">Tap To Receive My Kiss 💌</button>
-</div>
-
-<div class="love-screen" id="love">
-<div class="kiss">💋</div>
-<div class="love-text">
-You are my sweetest forever ❤️<br><br>
-Every kiss with you feels magical ✨<br><br>
-<b>I Love You Bhavya</b><br><br>
-Forever yours,<br>
-<b>Dudu 💖</b>
-</div>
-</div>
-
-<div class="footer">
-Made with Love 💕
-</div>
-
-<script>
-function openLove(){
-document.getElementById("music").play();
-document.getElementById("love").classList.add("show");
+    setTimeout(function(){
+      heart.remove();
+    },6000);
+  },500);
 }
 </script>
 
