@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Kiss Day Bhavya ❤️</title>
+
+<style>
+body{
+  margin:0;
+  padding:0;
+  height:100vh;
+  overflow:hidden;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(-45deg, #ff4e8a, #ff758c, #ff7eb3, #ff4e8a);
+  background-size: 400% 400%;
+  animation: gradient 8s ease infinite;
+}
+
+@keyframes gradient {
+  0%{background-position:0% 50%;}
+  50%{background-position:100% 50%;}
+  100%{background-position:0% 50%;}
+}
+
+.container{
+  text-align:center;
+  color:white;
+  z-index:2;
+}
+
+h1{
+  font-size:2.2em;
+  margin-bottom:10px;
+}
+
+button{
+  padding:12px 25px;
+  font-size:18px;
+  border:none;
+  border-radius:30px;
+  background:white;
+  color:#ff2e63;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+button:hover{
+  transform:scale(1.1);
+  background:#ffe6ec;
+}
+
+.glow{
+  animation: glowEffect 1s ease-in-out;
+}
+
+@keyframes glowEffect{
+  0%{box-shadow:0 0 0px white;}
+  50%{box-shadow:0 0 40px white;}
+  100%{box-shadow:0 0 0px white;}
+}
+
+#message{
+  margin-top:20px;
+  font-size:20px;
+  min-height:30px;
+}
+
+.kiss{
+  position:absolute;
+  font-size:25px;
+  animation: float 6s linear infinite;
+  opacity:0.7;
+}
+
+@keyframes float{
+  0%{transform:translateY(100vh);}
+  100%{transform:translateY(-10vh);}
+}
+
+.popup{
+  position:fixed;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  background:white;
+  color:#ff2e63;
+  padding:20px;
+  border-radius:15px;
+  display:none;
+  text-align:center;
+  box-shadow:0 0 20px rgba(0,0,0,0.3);
+}
+
+.popup button{
+  margin-top:10px;
+  background:#ff2e63;
+  color:white;
+}
+</style>
+</head>
+
+<body>
+
+<audio id="bgMusic" src="song.mp3" loop></audio>
+
+<div class="container">
+  <h1>Hey Bhavya 💋</h1>
+  <button onclick="startSurprise()">Tap for a Kiss 💖</button>
+  <div id="message"></div>
+</div>
+
+<div class="popup" id="popup">
+  <h2>Will you be mine forever? 💞</h2>
+  <button onclick="closePopup()">Yes Forever ❤️</button>
+</div>
+
+<script>
+const msgText = "From Dudu 💌 Happy Kiss Day Bhavya 💋❤️";
+let i = 0;
+
+function startSurprise(){
+  document.body.classList.add("glow");
+  document.getElementById("bgMusic").play();
+
+  typeWriter();
+  createConfetti();
+  document.getElementById("popup").style.display="block";
+}
+
+function typeWriter(){
+  if(i < msgText.length){
+    document.getElementById("message").innerHTML += msgText.charAt(i);
+    i++;
+    setTimeout(typeWriter, 70);
+  }
+}
+
+function closePopup(){
+  document.getElementById("popup").style.display="none";
+}
+
+function createConfetti(){
+  for(let i=0;i<20;i++){
+    let kiss = document.createElement("div");
+    kiss.innerHTML="💋";
+    kiss.className="kiss";
+    kiss.style.left=Math.random()*100+"vw";
+    kiss.style.animationDuration=(3+Math.random()*3)+"s";
+    document.body.appendChild(kiss);
+  }
+}
+</script>
+
+</body>
+</html>
