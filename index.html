@@ -2,18 +2,15 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-<meta http-equiv="Pragma" content="no-cache">
-<meta http-equiv="Expires" content="0">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kiss Day Surprise 💋</title>
+<title>Bhavya 💖 Kiss Day</title>
 
 <style>
 *{
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family: 'Poppins', sans-serif;
+font-family:'Segoe UI',sans-serif;
 }
 
 body{
@@ -21,35 +18,35 @@ height:100vh;
 display:flex;
 justify-content:center;
 align-items:center;
-background:linear-gradient(135deg,#ff2e63,#ff6f91);
+background:radial-gradient(circle at top,#ff4e8a,#ff1f5a);
 overflow:hidden;
 color:white;
 text-align:center;
-position:relative;
 }
 
-/* Floating hearts */
-.heart{
+/* Floating Background Hearts */
+.bg-heart{
 position:absolute;
 font-size:20px;
-animation: float linear infinite;
-opacity:0.6;
+opacity:0.5;
+animation: floatUp linear infinite;
 }
 
-@keyframes float{
-0%{transform:translateY(100vh) scale(0.6);}
+@keyframes floatUp{
+0%{transform:translateY(100vh) scale(0.5);}
 100%{transform:translateY(-10vh) scale(1.2);}
 }
 
-.card{
-background:rgba(255,255,255,0.15);
-backdrop-filter:blur(15px);
-padding:40px;
+/* Main Box */
+.box{
+background:rgba(255,255,255,0.12);
+backdrop-filter:blur(20px);
+padding:50px 30px;
 border-radius:30px;
 width:90%;
 max-width:420px;
-box-shadow:0 15px 40px rgba(0,0,0,0.3);
-animation:fadeIn 1s ease;
+box-shadow:0 20px 50px rgba(0,0,0,0.3);
+animation: fadeIn 1.2s ease;
 }
 
 @keyframes fadeIn{
@@ -57,19 +54,27 @@ from{opacity:0; transform:scale(0.8);}
 to{opacity:1; transform:scale(1);}
 }
 
-h1{
-font-size:28px;
-margin-bottom:20px;
+/* Neon Name */
+.name{
+font-size:32px;
+font-weight:bold;
+margin-bottom:10px;
+text-shadow:
+0 0 5px #fff,
+0 0 15px #ff9bd4,
+0 0 30px #ff2e63;
 }
 
+/* Button */
 button{
+margin-top:25px;
 padding:14px 28px;
 border:none;
 border-radius:30px;
 background:white;
-color:#ff2e63;
-font-size:16px;
+color:#ff1f5a;
 font-weight:bold;
+font-size:16px;
 cursor:pointer;
 transition:0.3s;
 }
@@ -79,16 +84,42 @@ transform:scale(1.1);
 background:#ffe6ec;
 }
 
-.hidden{
-display:none;
-margin-top:25px;
-font-size:18px;
-animation:slide 1s forwards;
+/* Hidden Love Screen */
+.love-screen{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:linear-gradient(135deg,#ff2e63,#ff6f91);
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+opacity:0;
+visibility:hidden;
+transition:0.6s;
 }
 
-@keyframes slide{
-from{opacity:0; transform:translateY(15px);}
-to{opacity:1; transform:translateY(0);}
+.love-screen.show{
+opacity:1;
+visibility:visible;
+}
+
+.kiss{
+font-size:50px;
+animation: kissMove 0.6s infinite alternate;
+}
+
+@keyframes kissMove{
+from{transform:translateX(-8px);}
+to{transform:translateX(8px);}
+}
+
+.love-text{
+margin-top:20px;
+font-size:22px;
+padding:0 20px;
 }
 
 .footer{
@@ -102,40 +133,46 @@ opacity:0.8;
 
 <body>
 
+<audio id="music" src="song.mp3"></audio>
+
 <script>
-for(let i=0;i<25;i++){
+for(let i=0;i<30;i++){
 let heart=document.createElement("div");
-heart.className="heart";
+heart.className="bg-heart";
 heart.innerHTML="💖";
 heart.style.left=Math.random()*100+"vw";
-heart.style.fontSize=(15+Math.random()*20)+"px";
+heart.style.fontSize=(15+Math.random()*25)+"px";
 heart.style.animationDuration=(5+Math.random()*5)+"s";
 document.body.appendChild(heart);
 }
 </script>
 
-<div class="card">
-<h1>Happy Kiss Day Bhavya 💋</h1>
+<div class="box">
+<div class="name">Bhavya 💖</div>
+<h2>Happy Kiss Day 💋</h2>
 
-<button onclick="reveal()">Open My Kiss 💌</button>
-
-<div class="hidden" id="msg">
-You are my sweetest forever 💞<br><br>
-Every kiss with you feels like magic ✨<br><br>
-<b>I Love You Bhavya</b> ❤️<br><br>
-Forever yours,<br>
-<b>Dudu 💋</b>
+<button onclick="openLove()">Tap To Receive My Kiss 💌</button>
 </div>
 
+<div class="love-screen" id="love">
+<div class="kiss">💋</div>
+<div class="love-text">
+You are my sweetest forever ❤️<br><br>
+Every kiss with you feels magical ✨<br><br>
+<b>I Love You Bhavya</b><br><br>
+Forever yours,<br>
+<b>Dudu 💖</b>
+</div>
 </div>
 
 <div class="footer">
-Made with ❤️ for Bhavya
+Made with Love 💕
 </div>
 
 <script>
-function reveal(){
-document.getElementById("msg").classList.remove("hidden");
+function openLove(){
+document.getElementById("music").play();
+document.getElementById("love").classList.add("show");
 }
 </script>
 
