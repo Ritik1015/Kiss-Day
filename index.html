@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kiss Day Bhavya v3 ❤️</title>
+
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>
+<meta http-equiv="Pragma" content="no-cache"/>
+<meta http-equiv="Expires" content="0"/>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+
+body{
+  height:100vh;
+  overflow:hidden;
+  font-family:Arial, sans-serif;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:linear-gradient(135deg,#ff4e8a,#ff2e63);
+  color:white;
+}
+
+/* Container */
+.container{
+  text-align:center;
+  z-index:5;
+  animation:fadeIn 1.2s ease forwards;
+  opacity:0;
+  transform:scale(0.9);
+}
+
+@keyframes fadeIn{
+  to{opacity:1;transform:scale(1);}
+}
+
+/* Neon */
+.name{
+  font-size:2.8em;
+  font-weight:bold;
+  text-shadow:
+    0 0 5px #fff,
+    0 0 15px #ff4e8a,
+    0 0 30px #ff2e63;
+}
+
+button{
+  margin-top:25px;
+  padding:12px 30px;
+  border:none;
+  border-radius:30px;
+  background:white;
+  color:#ff2e63;
+  font-size:18px;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+button:hover{transform:scale(1.1);}
+
+#message{
+  margin-top:20px;
+  font-size:20px;
+  min-height:30px;
+}
+
+/* Popup */
+.popup{
+  position:fixed;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  background:white;
+  color:#ff2e63;
+  padding:30px;
+  border-radius:25px;
+  text-align:center;
+  display:none;
+  z-index:20;
+  width:85%;
+  max-width:320px;
+}
+
+.popup button{
+  background:#ff2e63;
+  color:white;
+  margin-top:10px;
+}
+
+/* Hearts */
+.heart{
+  position:absolute;
+  top:-20px;
+  font-size:20px;
+  animation:fall linear infinite;
+  opacity:0.6;
+}
+
+@keyframes fall{
+  to{transform:translateY(110vh);}
+}
+</style>
+</head>
+
+<body>
+
+<audio id="bgMusic" src="song.mp3?v=3" loop></audio>
+
+<div class="container">
+  <div class="name">Bhavya 💖</div>
+  <h2>Happy Kiss Day 💋</h2>
+  <button onclick="startLove()">Tap for a Kiss 💕</button>
+  <div id="message"></div>
+</div>
+
+<div class="popup" id="popup">
+  <h2>Will you be mine forever? 💞</h2>
+  <button onclick="closePopup()">Yes Forever ❤️</button>
+</div>
+
+<script>
+const text="From Dudu 💌 Happy Kiss Day Bhavya 💋❤️";
+let i=0;
+
+function startLove(){
+  document.getElementById("bgMusic").play();
+  document.getElementById("popup").style.display="block";
+  typeWriter();
+  heartRain();
+}
+
+function typeWriter(){
+  if(i<text.length){
+    document.getElementById("message").innerHTML+=text.charAt(i);
+    i++;
+    setTimeout(typeWriter,60);
+  }
+}
+
+function closePopup(){
+  document.getElementById("popup").style.display="none";
+}
+
+function heartRain(){
+  for(let i=0;i<25;i++){
+    let heart=document.createElement("div");
+    heart.innerHTML="💖";
+    heart.className="heart";
+    heart.style.left=Math.random()*100+"vw";
+    heart.style.animationDuration=(3+Math.random()*3)+"s";
+    document.body.appendChild(heart);
+  }
+}
+</script>
+
+<!-- FORCE UPDATE VERSION 3 -->
+
+</body>
+</html>
