@@ -2,15 +2,18 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Happy Kiss Day Bhavya ❤️</title>
+<title>Kiss Day Surprise 💋</title>
 
 <style>
 *{
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family: 'Segoe UI', sans-serif;
+font-family: 'Poppins', sans-serif;
 }
 
 body{
@@ -18,35 +21,40 @@ height:100vh;
 display:flex;
 justify-content:center;
 align-items:center;
-background:linear-gradient(135deg,#ff416c,#ff4b2b);
+background:linear-gradient(135deg,#ff2e63,#ff6f91);
 overflow:hidden;
 color:white;
 text-align:center;
+position:relative;
 }
 
 /* Floating hearts */
 .heart{
 position:absolute;
 font-size:20px;
-animation: float 8s linear infinite;
+animation: float linear infinite;
 opacity:0.6;
 }
 
 @keyframes float{
-0%{transform:translateY(100vh) scale(0.5);}
+0%{transform:translateY(100vh) scale(0.6);}
 100%{transform:translateY(-10vh) scale(1.2);}
 }
 
-/* Main Card */
 .card{
-background:rgba(255,255,255,0.1);
+background:rgba(255,255,255,0.15);
 backdrop-filter:blur(15px);
 padding:40px;
-border-radius:25px;
+border-radius:30px;
 width:90%;
-max-width:400px;
-box-shadow:0 20px 40px rgba(0,0,0,0.3);
-transition:0.5s;
+max-width:420px;
+box-shadow:0 15px 40px rgba(0,0,0,0.3);
+animation:fadeIn 1s ease;
+}
+
+@keyframes fadeIn{
+from{opacity:0; transform:scale(0.8);}
+to{opacity:1; transform:scale(1);}
 }
 
 h1{
@@ -55,15 +63,15 @@ margin-bottom:20px;
 }
 
 button{
-padding:15px 30px;
+padding:14px 28px;
 border:none;
 border-radius:30px;
 background:white;
-color:#ff416c;
+color:#ff2e63;
 font-size:16px;
+font-weight:bold;
 cursor:pointer;
 transition:0.3s;
-font-weight:bold;
 }
 
 button:hover{
@@ -71,26 +79,16 @@ transform:scale(1.1);
 background:#ffe6ec;
 }
 
-.message{
+.hidden{
+display:none;
 margin-top:25px;
 font-size:18px;
-display:none;
-animation:fadeIn 1s ease forwards;
+animation:slide 1s forwards;
 }
 
-@keyframes fadeIn{
-from{opacity:0; transform:translateY(10px);}
+@keyframes slide{
+from{opacity:0; transform:translateY(15px);}
 to{opacity:1; transform:translateY(0);}
-}
-
-.kiss{
-font-size:40px;
-animation:kissMove 1s infinite alternate;
-}
-
-@keyframes kissMove{
-from{transform:translateX(-5px);}
-to{transform:translateX(5px);}
 }
 
 .footer{
@@ -104,15 +102,14 @@ opacity:0.8;
 
 <body>
 
-<!-- Floating Hearts Script Generated -->
 <script>
-for(let i=0;i<20;i++){
+for(let i=0;i<25;i++){
 let heart=document.createElement("div");
 heart.className="heart";
 heart.innerHTML="💖";
 heart.style.left=Math.random()*100+"vw";
+heart.style.fontSize=(15+Math.random()*20)+"px";
 heart.style.animationDuration=(5+Math.random()*5)+"s";
-heart.style.fontSize=(15+Math.random()*25)+"px";
 document.body.appendChild(heart);
 }
 </script>
@@ -120,27 +117,25 @@ document.body.appendChild(heart);
 <div class="card">
 <h1>Happy Kiss Day Bhavya 💋</h1>
 
-<div class="kiss">💋</div>
+<button onclick="reveal()">Open My Kiss 💌</button>
 
-<br>
-
-<button onclick="showMessage()">Tap to Open My Kiss</button>
-
-<div class="message" id="loveMsg">
-You are my forever, my always, my sweetest kiss ❤️<br><br>
-I promise to steal your kisses for lifetime 😘<br><br>
-<b>I Love You Bhavya</b> 💞
+<div class="hidden" id="msg">
+You are my sweetest forever 💞<br><br>
+Every kiss with you feels like magic ✨<br><br>
+<b>I Love You Bhavya</b> ❤️<br><br>
+Forever yours,<br>
+<b>Dudu 💋</b>
 </div>
 
 </div>
 
 <div class="footer">
-From Dudu ❤️
+Made with ❤️ for Bhavya
 </div>
 
 <script>
-function showMessage(){
-document.getElementById("loveMsg").style.display="block";
+function reveal(){
+document.getElementById("msg").classList.remove("hidden");
 }
 </script>
 
